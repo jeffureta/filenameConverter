@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 function formatFileName(fileName) {
   // Convert to lowercase
@@ -19,5 +20,9 @@ if (!fileName) {
 }
 
 const formattedFileName = formatFileName(fileName);
+const currentDirectory = process.cwd();
+const newFilePath = path.join(currentDirectory, formattedFileName);
 
+fs.writeFileSync(newFilePath, '', 'utf8');
 console.log('Formatted file name:', formattedFileName);
+console.log('File saved as:', newFilePath);
