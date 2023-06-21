@@ -2,12 +2,15 @@ const fs = require('fs');
 const path = require('path');
 
 function formatFileName(fileName) {
-  // Convert to lowercase
-  let formattedName = fileName.toLowerCase();
-
-  // Replace symbols, except hyphen, with hyphens
-  formattedName = formattedName.replace(/[^a-z0-9-]/g, '-');
-
+  let formattedName = '';
+  for (let i = 0; i < fileName.length; i++) {
+    const char = fileName[i];
+    if (/[a-zA-Z0-9-]/.test(char)) {
+      formattedName += char.toLowerCase();
+    } else {
+      formattedName += '-';
+    }
+  }
   return formattedName;
 }
 
@@ -24,7 +27,8 @@ const currentDirectory = process.cwd();
 const filePath = path.join(currentDirectory, fileName);
 const newFilePath = path.join(currentDirectory, formattedFileName);
 
-fs.renameSync(filePath, newFilePath);
+fs.copyFileSync(filePath, newFilePath);
+fs.unlinkSync(filePath);
 
 console.log('Formatted file name:', formattedFileName);
 console.log('File renamed as:', formattedFileName);

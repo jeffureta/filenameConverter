@@ -44,3 +44,11 @@ File renamed as: my-document-file.pdf
 ```
 
 The original file `My Document File.pdf` will be renamed to `my-document-file.pdf` in the same directory, while retaining its contents.
+
+## Known Issue
+
+- The renaming process may not work as expected on certain filesystems or platforms, resulting in the original file not being renamed. 
+
+  - On macOS with Apple M1 chip, there is a known issue where the plus '+' symbol may not be properly replaced by a hyphen. This can affect the renaming of files containing the plus symbol. 
+
+  If you encounter this issue, please ensure that you have appropriate permissions, and consider using an alternative method or manually renaming the file to achieve the desired formatting.
