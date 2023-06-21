@@ -5,8 +5,8 @@ function formatFileName(fileName) {
   // Convert to lowercase
   let formattedName = fileName.toLowerCase();
 
-  // Replace underscores and spaces with hyphens
-  formattedName = formattedName.replace(/[_\s]/g, '-');
+  // Replace symbols, except hyphen, with hyphens
+  formattedName = formattedName.replace(/[^a-z0-9-]/g, '-');
 
   return formattedName;
 }
