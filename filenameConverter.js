@@ -21,8 +21,10 @@ if (!fileName) {
 
 const formattedFileName = formatFileName(fileName);
 const currentDirectory = process.cwd();
+const filePath = path.join(currentDirectory, fileName);
 const newFilePath = path.join(currentDirectory, formattedFileName);
 
-fs.writeFileSync(newFilePath, '', 'utf8');
+fs.renameSync(filePath, newFilePath);
+
 console.log('Formatted file name:', formattedFileName);
-console.log('File saved as:', newFilePath);
+console.log('File renamed as:', formattedFileName);
